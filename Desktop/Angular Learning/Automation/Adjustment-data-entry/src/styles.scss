@@ -1,0 +1,50 @@
+body{
+    width: 100%;
+    height:100%;
+}
+
+.header{
+    width: 100%;
+    float: left;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    font-size: 28px;
+    font-weight: 400;
+    color: #fff;
+    position: relative;
+    background-color: #1a6898;
+    margin-bottom: 50px;
+    
+  
+}
+
+.cont{
+    width: 100%;
+    float: left;
+    position: relative;
+    text-align: center;
+    color: #000;
+    margin-bottom: 50px;
+    margin-left:50px;
+}
+
+.show{
+    display: inherit;
+}
+
+.button{
+    width: 120px;
+    float: left;
+    text-align: center;
+    height: 40px;
+    line-height: 35px;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 10px;
+    position: relative;
+    border: gray;
+    cursor: pointer;
+    background-color: gray
+
+}
