@@ -23,7 +23,28 @@ export class AppComponent {
   addDataArray = [];
   registerForm: FormGroup;
   submitted = false;
+  invalidNumber = false;
 
+  AdjData = [
+    {
+      id: 1,
+      vname: "pinki",
+      vsfid: "C3966",
+      vdate: "0/01/2020",
+      vhours: "05",
+      vcalls: 23,
+      vtalktime: 34
+    },
+    {
+      id: 2,
+      vname: "xyz",
+      vsfid: "C3966",
+      vdate: "0/01/2020",
+      vhours: "05",
+      vcalls: 23,
+      vtalktime: 34
+    }
+  ];
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
@@ -56,17 +77,27 @@ export class AppComponent {
     alert("SUCCESS!!");
   }
 
+  checkValue(ev) {
+    console.log(ev.target.value);
+    if (ev.target.value > 9 || ev.target.value < 2) {
+      this.invalidNumber = true;
+    }
+  }
+
   /*
 submit() {
 
   console.log(this.addDataArray, 'Received Data on click of submit');
     
-}
-
-addData() {
-
-  this.addDataArray.push(this.adjustmentData)
-  console.log(this.addDataArray, 'Received Data on click of submit');
-  
 }*/
+
+  addData() {
+    this.addDataArray.push(this.adjustmentData);
+    console.log(this.addDataArray, "Received Data on click of submit");
+  }
+
+  deleteRow() {
+    //  this.addDataArray.push(this.adjustmentData);
+    console.log(this.addDataArray, "Received Data on click of submit");
+  }
 }

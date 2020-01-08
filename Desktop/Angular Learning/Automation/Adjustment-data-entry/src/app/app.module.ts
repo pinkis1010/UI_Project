@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDatepickerModule } from 'ngx-bootstrap';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {InputTextModule} from 'primeng/inputtext';
-
+import {TableModule} from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,8 @@ import {InputTextModule} from 'primeng/inputtext';
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
     ReactiveFormsModule, InputTextModule,
-    FormsModule
+    FormsModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
