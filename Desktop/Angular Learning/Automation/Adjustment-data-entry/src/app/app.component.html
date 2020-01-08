@@ -1,5 +1,5 @@
 <div class="header">Data Adjustments</div>
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+<form autocomplete="off" [formGroup]="registerForm" (ngSubmit)="addData()">
   <div class="cont" style="width:100%;">
     <div class="ui-g ui-fluid">
       <div class="form-group">
@@ -7,7 +7,7 @@
           <input
             id="float-input"
             type="text"
-            style="width:300px;"
+            style="width:500px;"
             formControlName="name"
             pInputText
           />
@@ -21,7 +21,7 @@
         <span class="ui-float-label" style="margin-right: 10px;">
           <input
             id="float-input"
-            style="width:300px;"
+            style="width:500px;"
             formControlName="sfid"
             pInputText
           />
@@ -31,19 +31,21 @@
           <div *ngIf="f.sfid.errors.required">SFID is required</div>
         </div>
       </div>
+
       <div class="form-group">
-        <input
-          type="text"
-          formControlName="date"
-          style="width:300px;margin-right: 10px;border: 1px solid #A8A8A8;height:35px"
-          placeholder="Date"
-          class="form-control"
-          placement="bottom"
-          bsDatepicker
-        />
-      </div>
-      <div *ngIf="submitted && f.date.errors" class="invalid-feedback show">
-        <div *ngIf="f.date.errors.required">Date is required</div>
+        <span class="ui-float-label" style="margin-right: 10px;">
+          <input
+            id="float-input"
+            style="width:500px;"
+            formControlName="date"
+            pInputText
+            bsDatepicker
+          />
+          <label for="float-input">Date</label>
+        </span>
+        <div *ngIf="submitted && f.date.errors" class="invalid-feedback show">
+          <div *ngIf="f.date.errors.required">Date is required</div>
+        </div>
       </div>
     </div>
   </div>
@@ -56,7 +58,7 @@
             maxlength="2"
             (input)="checkValue($event)"
             id="float-input"
-            style="width:300px;"
+            style="width:500px;"
             pInputText
             formControlName="hours"
           />
@@ -69,9 +71,10 @@
       <div class="form-group">
         <span class="ui-float-label" style="margin-right: 10px;">
           <input
+            autocomplete="off"
             maxlength="2"
             id="float-input"
-            style="width:300px;"
+            style="width:500px;"
             formControlName="calls"
             pInputText
           />
@@ -79,12 +82,13 @@
         </span>
       </div>
       <div class="form-group">
-        <span class="ui-float-label">
+        <span class="ui-float-label" style="margin-right: 10px;">
           <input
-            id="float-input"
             maxlength="2"
-            style="width:300px;"
-            formControlName="tt"
+            id="float-input"
+            style="width:500px;"
+            pInputText
+            formControlName="talktime"
           />
           <label for="float-input">Adjustment Talk Time</label>
         </span>
@@ -95,19 +99,17 @@
     <button
       class="button"
       (click)="addData()"
-      style="margin-right:20px;margin-left:50px;margin-bottom:60px"
+      style="margin-right:20px;margin-left:50px;margin-bottom:30px"
     >
       Add
-    </button>
-    <button class="button" style="margin-right:20px;">
-      Submit
     </button>
   </div>
   <div
     id="tbl"
-    style="width:80%;margin-left:50px;float:left;position:relative;"
+    style="width:95%;margin-left:50px;float:left;position:relative;  margin-bottom: 30px;
+    "
   >
-    <p-table [value]="AdjData">
+    <p-table [value]="addDataArray">
       <ng-template pTemplate="header">
         <tr>
           <th>Name</th>
@@ -116,19 +118,26 @@
           <th>Adjustment Hours</th>
           <th>Adjustment Calls</th>
           <th>Adjustment Talk Time</th>
+          <th class="center">Action</th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-book>
-        <tr *ngFor="let dataObj of AdjData">
-          <td>{{ dataObj?.vname }}</td>
-          <td>{{ dataObj?.vsfid }}</td>
-          <td>{{ dataObj?.vdate }}</td>
-          <td>{{ dataObj?.vhours }}</td>
-          <td>{{ dataObj?.vcalls }}</td>
-          <td>{{ dataObj?.vtalktime }}</td>
-          <div class="deleteRow" (click)="deleteRow()"></div>
+        <tr>
+          <td>{{ book?.name }}</td>
+          <td>{{ book?.sfid }}</td>
+          <td>{{ book?.date | date: "MM/dd/yyyy" }}</td>
+          <td>{{ book?.hours || "n/a" }}</td>
+          <td>{{ book?.calls }}</td>
+          <td>{{ book?.talktime }}</td>
+          <td class="deleteRow" (click)="deleteRow(book)"></td>
         </tr>
       </ng-template>
     </p-table>
+  </div>
+
+  <div class="form-group" style="width:100%;float:left;position:relative;">
+    <button class="button" style="margin-left:50px;">
+      Submit
+    </button>
   </div>
 </form>

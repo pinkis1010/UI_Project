@@ -46,14 +46,19 @@ body {
   background-color: gray;
 }
 
+.center {
+  text-align: center;
+}
+
 .deleteRow {
-  width: 100px;
   height: 25px;
-  line-height: 25px;
   cursor: pointer;
-  margin-top:7px;
-  background-size: 22px;
+  margin-top: 7px;
+  background-size: 25px;
   background-repeat: no-repeat;
   padding: 5px;
+  text-align: center;
+  background-position: center;
+  background-color: #fff;
   background-image: url("../Images/icon.png");
 }
