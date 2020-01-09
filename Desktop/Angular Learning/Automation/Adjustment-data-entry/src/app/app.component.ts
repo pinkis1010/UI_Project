@@ -63,6 +63,16 @@ export class AppComponent {
     console.log(this.submitted, " sub val");
   }
 
+  SubmitData() {
+    if ((this.addDataArray.length = 0)) {
+      alert("Coming Soon");
+      this.submitted = false;
+    } else {
+      this.submitted = false;
+      alert("You need to add data before submitting it.");
+    }
+  }
+
   deleteRow(dataObj) {
     let index = this.addDataArray.indexOf(dataObj);
     console.log(index, "index aaya");
